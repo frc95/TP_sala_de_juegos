@@ -17,6 +17,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { RutaNormalComponent } from './components/ruta-normal/ruta-normal.component';
 import { RutaDificilComponent } from './components/ruta-dificil/ruta-dificil.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PiedraPapelTijeraComponent } from './components/juegos/piedra-papel-tijera/piedra-papel-tijera.component';
+import { TatetiComponent } from './components/juegos/tateti/tateti.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { RutaDificilComponent } from './components/ruta-dificil/ruta-dificil.com
     NavigationComponent,
     RutaFacilComponent,
     RutaNormalComponent,
-    RutaDificilComponent
+    RutaDificilComponent,
+    PiedraPapelTijeraComponent,
+    TatetiComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,8 @@ import { RutaDificilComponent } from './components/ruta-dificil/ruta-dificil.com
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,37 @@
+.divTateti{
+    height: 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../../../../assets/backTaTeTi.png");
+    
+}
+
+
+.divbuttonsAbajo{
+    height: 50px;
+    position: relative;
+    top: 16%;
+    left: 25%;
+}
+.divbuttonsMedio{
+    height: 50px;
+    position: relative;
+    top: 15%;
+    left: 25%;
+}
+.divbuttonsArriba{
+    height: 50px;
+    position: relative;
+    top: 14%;
+    left: 25%;
+}
+
+.button{
+    width: 50px;
+    height: 50px;
+    margin-left:20px;
+}
+.buttonReiniciar{
+    display: flex;
+    justify-content: center;
+}

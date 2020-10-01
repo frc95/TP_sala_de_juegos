@@ -1,0 +1,61 @@
+.rotate90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.rotate270 {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+.divControles{
+    height: 200px;
+    justify-content: center;
+    display: flex;
+    
+}
+.divControlesJugador{
+    height: 100px;
+    justify-content: center;
+    display: flex;
+}
+
+.controlJugador{
+    animation-name: movimientoJugador;
+    animation-duration: 4s;
+    position: relative;
+
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+@keyframes movimientoJugador {
+    0%   { left:0px; top:0px;}
+    50%  { left:0px; top:-100px;}
+    100% { left:0px; top:0px;}
+}
+
+.controlMaquina{
+    animation-name: movimientoMaquina;
+    animation-duration: 4s;
+    position: relative;
+
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+@keyframes movimientoMaquina {
+    0%   { left:0px; top:0px;}
+    50%  { left:0px; top:100px;}
+    100% { left:0px; top:0px;}
+}

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { MatDialog } from '@angular/material/dialog';
+import { PiedraPapelTijeraComponent } from '../juegos/piedra-papel-tijera/piedra-papel-tijera.component';
+import { TatetiComponent } from '../juegos/tateti/tateti.component';
 
 @Component({
   selector: 'app-ruta-facil',
@@ -25,17 +28,17 @@ export class RutaFacilComponent {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, public dialog : MatDialog) {}
 
   Jugar(juego : any)
   {
     if(juego.title=="Piedra Papel Tijera")
     {
-      this.JugarPPT();
+      this.openDialog(PiedraPapelTijeraComponent);
     }
     if(juego.title=="TaTeTi")
     {
-      this.JugarTaTeTi();
+      this.openDialog(TatetiComponent);
     }
   }
   JugarPPT()
@@ -46,4 +49,17 @@ export class RutaFacilComponent {
   {
     alert("Bienvenido a tateti");
   }
+
+  openDialog(componentHTML : any) {
+    const dialogRef = this.dialog.open(componentHTML,{
+      height: '600px',
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
 }

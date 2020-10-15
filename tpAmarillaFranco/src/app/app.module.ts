@@ -20,6 +20,10 @@ import { RutaDificilComponent } from './components/ruta-dificil/ruta-dificil.com
 import { MatDialogModule } from '@angular/material/dialog';
 import { PiedraPapelTijeraComponent } from './components/juegos/piedra-papel-tijera/piedra-papel-tijera.component';
 import { TatetiComponent } from './components/juegos/tateti/tateti.component';
+import { AdivinaNumeroComponent } from './components/juegos/adivina-numero/adivina-numero.component';
+import { AgilidadArimeticaComponent } from './components/juegos/agilidad-arimetica/agilidad-arimetica.component';
+import { AnagramaComponent } from './components/juegos/anagrama/anagrama.component';
+import { MemotestComponent } from './components/juegos/memotest/memotest.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { TatetiComponent } from './components/juegos/tateti/tateti.component';
     RutaNormalComponent,
     RutaDificilComponent,
     PiedraPapelTijeraComponent,
-    TatetiComponent
+    TatetiComponent,
+    AdivinaNumeroComponent,
+    AgilidadArimeticaComponent,
+    AnagramaComponent,
+    MemotestComponent
   ],
   imports: [
     BrowserModule,

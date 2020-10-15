@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { MatDialog } from '@angular/material/dialog';
+import { AnagramaComponent } from '../juegos/anagrama/anagrama.component';
+import { MemotestComponent } from '../juegos/memotest/memotest.component';
 
 @Component({
   selector: 'app-ruta-dificil',
@@ -13,21 +16,42 @@ export class RutaDificilComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
+          { title: 'Anagrama', cols: 1, rows: 1, foto:'../../../assets/anagrama.png' },
+          { title: 'Memotest', cols: 1, rows: 1, foto:'../../../assets/memotest.png' }
         ];
       }
 
       return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
+        { title: 'Anagrama', cols: 1, rows: 1, foto:'../../../assets/anagrama.png' },
+        { title: 'Memotest', cols: 1, rows: 1, foto:'../../../assets/memotest.png' }
       ];
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, public dialog : MatDialog) {}
+
+  Jugar(juego : any)
+  {
+    if(juego.title=="Anagrama")
+    {
+      this.openDialog(AnagramaComponent);
+    }
+    if(juego.title=="Memotest")
+    {
+      this.openDialog(MemotestComponent);
+    }
+  }
+
+  openDialog(componentHTML : any) {
+    const dialogRef = this.dialog.open(componentHTML,{
+      height: '600px',
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
 }

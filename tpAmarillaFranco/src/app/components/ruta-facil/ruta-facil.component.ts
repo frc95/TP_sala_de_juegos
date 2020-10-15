@@ -41,14 +41,7 @@ export class RutaFacilComponent {
       this.openDialog(TatetiComponent);
     }
   }
-  JugarPPT()
-  {
-    alert("Bienvenido a piedra papel tijera");
-  }
-  JugarTaTeTi()
-  {
-    alert("Bienvenido a tateti");
-  }
+  
 
   openDialog(componentHTML : any) {
     const dialogRef = this.dialog.open(componentHTML,{

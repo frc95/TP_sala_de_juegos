@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { MatDialog } from '@angular/material/dialog';
+import { AdivinaNumeroComponent } from '../juegos/adivina-numero/adivina-numero.component';
+import { AgilidadArimeticaComponent } from '../juegos/agilidad-arimetica/agilidad-arimetica.component';
 
 @Component({
   selector: 'app-ruta-normal',
@@ -13,21 +16,43 @@ export class RutaNormalComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
+          { title: 'Adivina el numero', cols: 1, rows: 1, foto:'../../../assets/adivina.png'},
+          { title: 'Agilidad arimetica', cols: 1, rows: 1, foto:'../../../assets/agilidad.png' }
+          
         ];
       }
 
       return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
+        { title: 'Adivina el numero', cols: 1, rows: 1, foto:'../../../assets/adivina.png' },
+        { title: 'Agilidad arimetica', cols: 1, rows: 1, foto:'../../../assets/agilidad.png' }
+        
       ];
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, public dialog : MatDialog) {}
+
+  Jugar(juego : any)
+  {
+    if(juego.title=="Adivina el numero")
+    {
+      this.openDialog(AdivinaNumeroComponent);
+    }
+    if(juego.title=="Agilidad arimetica")
+    {
+      this.openDialog(AgilidadArimeticaComponent);
+    }
+  }
+
+
+  openDialog(componentHTML : any) {
+    const dialogRef = this.dialog.open(componentHTML,{
+      height: '600px',
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }

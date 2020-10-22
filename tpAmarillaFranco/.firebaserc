@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "loginprueba-7c2bb": {
+      "hosting": {
+        "tpAmarillaFranco": [
+          "loginprueba-7c2bb"
+        ]
+      }
+    }
+  }
+}

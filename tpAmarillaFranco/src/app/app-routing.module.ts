@@ -1,22 +1,55 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 import { RutaDificilComponent } from './components/ruta-dificil/ruta-dificil.component';
 import { RutaFacilComponent } from './components/ruta-facil/ruta-facil.component';
 import { RutaNormalComponent } from './components/ruta-normal/ruta-normal.component';
 
 const routes: Routes = [
   {
-    path:'ruta-facil',
-    component: RutaFacilComponent
+    path:'navigation',
+    component: NavigationComponent,
+    children:[
+      {
+        path: 'ruta-facil',
+        outlet : 'juegos',
+        component: RutaFacilComponent,
+        
+      },
+      {
+        path:'ruta-normal',
+        outlet : 'juegos',
+        component: RutaNormalComponent,
+        
+      },
+      {
+        path:'ruta-dificil',
+        outlet : 'juegos',
+        component: RutaDificilComponent,
+       
+      }
+    ]
+  },
+  {
+    path:'',
+    component: LoginComponent
+  },
+  /*{
+    path: 'ruta-facil',
+    component: RutaFacilComponent,
+    outlet : 'juegos'
   },
   {
     path:'ruta-normal',
-    component: RutaNormalComponent
+    component: RutaNormalComponent,
+    outlet : 'juegos'
   },
   {
     path:'ruta-dificil',
-    component: RutaDificilComponent
-  }
+    component: RutaDificilComponent,
+    outlet : 'juegos'
+  }*/
 ];
 
 @NgModule({

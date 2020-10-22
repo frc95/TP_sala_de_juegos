@@ -15,15 +15,24 @@ import { RutaFacilComponent } from './components/ruta-facil/ruta-facil.component
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { RutaNormalComponent } from './components/ruta-normal/ruta-normal.component';
 import { RutaDificilComponent } from './components/ruta-dificil/ruta-dificil.component';
-import { MatDialogModule } from '@angular/material/dialog';
 import { PiedraPapelTijeraComponent } from './components/juegos/piedra-papel-tijera/piedra-papel-tijera.component';
 import { TatetiComponent } from './components/juegos/tateti/tateti.component';
 import { AdivinaNumeroComponent } from './components/juegos/adivina-numero/adivina-numero.component';
 import { AgilidadArimeticaComponent } from './components/juegos/agilidad-arimetica/agilidad-arimetica.component';
 import { AnagramaComponent } from './components/juegos/anagrama/anagrama.component';
 import { MemotestComponent } from './components/juegos/memotest/memotest.component';
+import { LoginComponent } from './components/login/login.component';
+
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +46,9 @@ import { MemotestComponent } from './components/juegos/memotest/memotest.compone
     AdivinaNumeroComponent,
     AgilidadArimeticaComponent,
     AnagramaComponent,
-    MemotestComponent
+    MemotestComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +63,11 @@ import { MemotestComponent } from './components/juegos/memotest/memotest.compone
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

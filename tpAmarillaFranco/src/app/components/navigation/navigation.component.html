@@ -5,9 +5,9 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#" routerLink='ruta-facil' routerLinkActive='active'>Facil</a>
-      <a mat-list-item href="#" routerLink='ruta-normal' routerLinkActive='active'>Normal</a>
-      <a mat-list-item href="#" routerLink='ruta-dificil' routerLinkActive='active'>Dificil</a>
+      <a mat-list-item href="#" [routerLink]="['/navigation', {outlets: {'juegos':['ruta-facil']} }]" >Facil</a>
+      <a mat-list-item href="#" [routerLink]="['/navigation', {outlets: {'juegos':['ruta-normal']} }]">Normal</a>
+      <a mat-list-item href="#" [routerLink]="['/navigation', {outlets: {'juegos':['ruta-dificil']} }]">Dificil</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -22,6 +22,6 @@
       </button>
       <span>Salon de juegos de Amarilla Franco</span>
     </mat-toolbar>
-    <router-outlet></router-outlet>
+    <router-outlet name="juegos"></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

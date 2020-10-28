@@ -5,11 +5,13 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { RutaDificilComponent } from './components/ruta-dificil/ruta-dificil.component';
 import { RutaFacilComponent } from './components/ruta-facil/ruta-facil.component';
 import { RutaNormalComponent } from './components/ruta-normal/ruta-normal.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {
     path:'navigation',
     component: NavigationComponent,
+    canActivate : [LoginGuard],
     children:[
       {
         path: 'ruta-facil',

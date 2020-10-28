@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +14,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required)
   });
 
-  constructor(private auth : AngularFireAuth, private route : Router) { }
+  constructor(private authSvc : AuthService) { }
 
 
   ngOnInit(): void {
@@ -23,15 +22,6 @@ export class LoginComponent implements OnInit {
 
   Login(form)
   {
-    //console.log('Form', form.value.password);
-    try{
-      const rta = this.auth.signInWithEmailAndPassword(form.value.email,form.value.password);
-      console.log(rta);
-      this.route.navigate(['navigation']);
-    }
-    catch(error){
-      console.log(error);
-    
-    }
+    this.authSvc.AuthLogin(form);
   }
 }

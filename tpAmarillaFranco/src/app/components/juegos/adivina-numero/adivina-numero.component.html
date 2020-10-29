@@ -1,1 +1,15 @@
-<p>adivina-numero works!</p>
+<div class="numeroOculto">
+    <img src="../../../../assets/cortina.png" id="cortina" alt="" width="230" height="230">
+       
+    <h1>{{numeroOculto}}</h1>
+</div>
+<div class="elegirNumero">
+    <h3>{{resultado}}</h3>
+    <label for="">Ingrese un numero: </label>
+    <input type="number" min="0" max="10" value="0" id="numeroJugador" [(ngModel)]="numeroElegido">
+</div>
+<div class="adivina">
+    <button mat-raised-button color="primary" (click)="Adivinar()">Adivina</button>
+</div>
+
+<textarea name="" id="registro" cols="20" rows="4" disabled>{{registro}}</textarea>

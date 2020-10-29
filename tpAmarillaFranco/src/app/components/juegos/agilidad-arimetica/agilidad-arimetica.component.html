@@ -1,1 +1,13 @@
-<p>agilidad-arimetica works!</p>
+<div class="resultado">  
+    <h1>{{resultado}}</h1>
+</div>
+<div class="cuenta">
+    <h3>{{mensaje}}</h3>
+    <label for="">{{cuenta}}</label>
+    <input type="number" min="0" max="500" value="0" [(ngModel)]="resultadoJugador">
+</div>
+<div class="resolver">
+    <button mat-raised-button color="primary" (click)="Resolver()">Resolver</button>
+</div>
+
+<textarea name="" id="registro" cols="20" rows="4" disabled>{{registro}}</textarea>

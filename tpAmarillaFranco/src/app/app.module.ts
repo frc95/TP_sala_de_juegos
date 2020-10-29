@@ -33,6 +33,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './components/home/home.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { HomeComponent } from './components/home/home.component';
     MatFormFieldModule,
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebase),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,41 @@
+.numeroOculto{
+    
+    padding: 19px 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.elegirNumero{
+    padding: 8px 0;
+    text-align: center;
+}
+
+.adivina{
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1{
+    position: relative;
+    /*position: absolute;*/
+    z-index: 1;
+    font-size: 90px;
+    top: -125px;
+}
+
+img{
+    z-index: 2;
+    position: relative;
+}
+
+.animacionCortina{
+    animation-name: moverArriba;
+    animation-duration: 4s;
+}
+
+@keyframes moverArriba {
+    
+    0%  {top:0px;}
+    100% {top:-200px;}
+    
+}

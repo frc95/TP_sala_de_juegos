@@ -1,6 +1,6 @@
 .resultado{
-    
-    padding: 70px 0;
+    background-color: dodgerblue;
+    padding: 35px 0;
     text-align: center;
 }
 
@@ -12,12 +12,30 @@
 
 .resolver{
     
-    padding: 30px 0;
+    padding: 28px 0;
     text-align: center;
 }
 
+.labelCuenta{
+    font-size: 11pt;
+}
 
+.textBoxBig{
+    
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+}
+.textBoxBig:focus{
+    border-color: dodgerblue;
+    box-shadow: 0 0 8px 0 dodgerblue;
+}
 
-h1{
-    font-size: 90px;
+.tiempo{
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }

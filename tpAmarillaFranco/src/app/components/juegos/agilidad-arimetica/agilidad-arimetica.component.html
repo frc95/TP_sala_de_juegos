@@ -1,13 +1,21 @@
-<div class="resultado">  
-    <h1>{{resultado}}</h1>
+<div class="resultado">
+    <h1>Tiene 3 intentos</h1>
+    <img src="../../../../assets/nada.png" id="img0" alt="" height="45" width="45">
+    <img src="../../../../assets/nada.png" id="img1" alt="" height="45" width="45">
+    <img src="../../../../assets/nada.png" id="img2" alt="" height="45" width="45">
 </div>
 <div class="cuenta">
     <h3>{{mensaje}}</h3>
-    <label for="">{{cuenta}}</label>
-    <input type="number" min="0" max="500" value="0" [(ngModel)]="resultadoJugador">
+    <label for="" class="labelCuenta">{{cuenta}}</label>
+    <input class="textBoxBig" id="textResultado" type="number" min="0" max="500" value="0" [(ngModel)]="resultadoJugador" [disabled]="!activar">
+    <button mat-raised-button id="buttonResolver" style="margin-left: 10px;" color="primary" (click)="Resolver()" [disabled]="!activar">Resolver</button>
 </div>
 <div class="resolver">
-    <button mat-raised-button color="primary" (click)="Resolver()">Resolver</button>
+    <button mat-raised-button color="primary" (click)="empezar()">Empezar</button>
+    <button mat-raised-button style="margin-left: 10px;" color="primary" (click)="reiniciar()">Reiniciar</button>
+</div>
+<div class="tiempo">
+    <h2><b>{{display}}</b></h2>
 </div>
 
 <textarea name="" id="registro" cols="20" rows="4" disabled>{{registro}}</textarea>

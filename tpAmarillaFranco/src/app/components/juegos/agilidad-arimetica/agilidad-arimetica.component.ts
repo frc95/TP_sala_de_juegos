@@ -23,10 +23,16 @@ export class AgilidadArimeticaComponent implements OnInit {
   derrotas : number=0;
   registro : string = "Victorias: "+this.victorias+"\n"+"Derrotas: "+this.derrotas+"\n";
 
+  //variables para el temporizador
+  time: number = 0;
+  display = "0:0";
+  interval;
+
+  //empezar
+  activar : boolean = false;
+
   constructor() {
     this.GenerarCuenta();
-
-
   }
 
   ngOnInit(): void {
@@ -47,6 +53,24 @@ export class AgilidadArimeticaComponent implements OnInit {
       this.mensaje="Sigue intentando";
       this.RegistroDatos();
       this.GenerarCuenta();
+    }
+
+    if(this.derrotas==1)
+    {
+      document.images['img0'].src="../../../../assets/x.png";
+    }
+    if(this.derrotas==2)
+    {
+      document.images['img1'].src="../../../../assets/x.png";
+    }
+    if(this.derrotas==3)
+    {
+      document.images['img2'].src="../../../../assets/x.png";
+      this.pausar();
+      this.activar=false;
+      this.mensaje="Si desea comenzar de nuevo pulse el boton Reiniciar";
+      this.derrotas=0;
+      this.time=0;
     }
     
   }
@@ -92,5 +116,39 @@ export class AgilidadArimeticaComponent implements OnInit {
     this.cuenta=String(this.numeroUno)+this.operadorString+String(this.numeroDos)+"=";
 
     console.log("Resultado: "+this.resultado);
+  }
+
+  empezarTemporizador(){
+    this.interval = setInterval(() => {
+      if(this.time === 0){
+        this.time++;
+      }
+      else{
+        this.time++;
+      }
+      this.display = this.transform(this.time);
+    }, 1000);
+  }
+
+  transform(value: number):string{
+    const minutes : number = Math.floor(value/60);
+    return minutes + ':' + (value - minutes * 60);
+  }
+
+  pausar(){
+    clearInterval(this.interval);
+  }
+
+  empezar()
+  {
+    this.activar=true;
+    this.empezarTemporizador();
+  }
+  reiniciar()
+  {
+    this.display = "0:0";
+    document.images['img0'].src="../../../../assets/nada.png";
+    document.images['img1'].src="../../../../assets/nada.png";
+    document.images['img2'].src="../../../../assets/nada.png";
   }
 }

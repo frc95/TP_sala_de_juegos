@@ -1,1 +1,26 @@
-<p>memotest works!</p>
+<div style="text-align: center;">
+    <button mat-raised-button [ngStyle]="{ 'background-image': cartas[0].validarFrente ? 'url(' + cartas[0].src + ')' : 'url(' + bocaAbajo + ')' }" class="buttonMemo" (click)="Seleccionar(0)" [disabled]="!cartas[0].desactivar"></button>
+    <button mat-raised-button [ngStyle]="{ 'background-image': cartas[1].validarFrente ? 'url(' + cartas[1].src + ')' : 'url(' + bocaAbajo + ')' }" class="buttonMemo" (click)="Seleccionar(1)" [disabled]="!cartas[1].desactivar"></button>
+    <button mat-raised-button [ngStyle]="{ 'background-image': cartas[2].validarFrente ? 'url(' + cartas[2].src + ')' : 'url(' + bocaAbajo + ')' }" class="buttonMemo" (click)="Seleccionar(2)" [disabled]="!cartas[2].desactivar"></button>
+    <button mat-raised-button [ngStyle]="{ 'background-image': cartas[3].validarFrente ? 'url(' + cartas[3].src + ')' : 'url(' + bocaAbajo + ')' }" class="buttonMemo" (click)="Seleccionar(3)" [disabled]="!cartas[3].desactivar"></button>
+</div>
+<div style="text-align: center;">
+    <button mat-raised-button [ngStyle]="{ 'background-image': cartas[4].validarFrente ? 'url(' + cartas[4].src + ')' : 'url(' + bocaAbajo + ')' }" class="buttonMemo" (click)="Seleccionar(4)" [disabled]="!cartas[4].desactivar"></button>
+    <button mat-raised-button [ngStyle]="{ 'background-image': cartas[5].validarFrente ? 'url(' + cartas[5].src + ')' : 'url(' + bocaAbajo + ')' }" class="buttonMemo" (click)="Seleccionar(5)" [disabled]="!cartas[5].desactivar"></button>
+    <button mat-raised-button [ngStyle]="{ 'background-image': cartas[6].validarFrente ? 'url(' + cartas[6].src + ')' : 'url(' + bocaAbajo + ')' }" class="buttonMemo" (click)="Seleccionar(6)" [disabled]="!cartas[6].desactivar"></button>
+    <button mat-raised-button [ngStyle]="{ 'background-image': cartas[7].validarFrente ? 'url(' + cartas[7].src + ')' : 'url(' + bocaAbajo + ')' }" class="buttonMemo" (click)="Seleccionar(7)" [disabled]="!cartas[7].desactivar"></button>
+</div>
+<div style="text-align: center;">
+    <button mat-raised-button [ngStyle]="{ 'background-image': cartas[8].validarFrente ? 'url(' + cartas[8].src + ')' : 'url(' + bocaAbajo + ')' }" class="buttonMemo" (click)="Seleccionar(8)" [disabled]="!cartas[8].desactivar"></button>
+    <button mat-raised-button [ngStyle]="{ 'background-image': cartas[9].validarFrente ? 'url(' + cartas[9].src + ')' : 'url(' + bocaAbajo + ')' }" class="buttonMemo" (click)="Seleccionar(9)" [disabled]="!cartas[9].desactivar"></button>
+    <button mat-raised-button [ngStyle]="{ 'background-image': cartas[10].validarFrente ? 'url(' + cartas[10].src + ')' : 'url(' + bocaAbajo + ')' }" class="buttonMemo" (click)="Seleccionar(10)" [disabled]="!cartas[10].desactivar"></button>
+    <button mat-raised-button [ngStyle]="{ 'background-image': cartas[11].validarFrente ? 'url(' + cartas[11].src + ')' : 'url(' + bocaAbajo + ')' }" class="buttonMemo" (click)="Seleccionar(11)" [disabled]="!cartas[11].desactivar"></button>
+</div>
+<div style="text-align: center;">
+    <button mat-raised-button color="primary" (click)="Reinicio()">Reiniciar</button>
+</div>
+<div style="text-align: center;">
+    <h2><b>{{display}}</b></h2>
+    <h2><b>{{mensaje}}</b></h2>
+</div>
+

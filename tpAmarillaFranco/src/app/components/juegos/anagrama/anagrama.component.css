@@ -1,0 +1,84 @@
+.resultado{
+    background-color: dodgerblue;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.cortina {
+    
+    height: 200px;
+    overflow: hidden; 
+}
+
+.cortina_envoltura {
+    
+    height: 200px;
+}
+
+.cortina_panel {
+    background: orange;
+    width: 50%;
+    height: 100vh; 
+    float: left; 
+    position: relative; 
+    z-index: 2; 
+    transition: all 1s ease-out;
+}
+
+.cortina_contenido {
+    background: blue;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 517px;
+}
+
+input[type=checkbox] {
+    position: absolute; 
+    width: 500px;
+    height: 200px; 
+    z-index: 100; 
+    opacity: 0; 
+}
+
+input[type=checkbox]:checked ~ div.curtain_panel_izquierda {
+    transform: translateX(0);
+}
+          
+  
+input[type=checkbox]:checked ~ div.curtain_panel_derecha {
+    transform: translateX(0);
+}
+
+.curtain_panel_izquierda {
+    transform: translateX(-100%);
+}
+  
+  
+.curtain_panel_derecha {
+    transform: translateX(100%);
+}
+
+.fuente{
+    font: oblique bold 120% cursive;
+    font-size: 350%;
+}
+
+.textoResultado{
+    background-color: red;
+    padding: 28px 0;
+    text-align: center;
+}
+
+.labelPalabra{
+    font-size: 14pt;
+}
+
+.tiempo{
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

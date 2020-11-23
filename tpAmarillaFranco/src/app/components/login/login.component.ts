@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,11 +11,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    email: new FormControl('admin@admin.com', Validators.required),
-    password: new FormControl('admin123', Validators.required)
+    email: new FormControl('juan@juan.com', Validators.required),
+    password: new FormControl('juan123', Validators.required)
   });
 
-  constructor(private authSvc : AuthService) { }
+  constructor(private authSvc : AuthService, private route: Router) { }
 
 
   ngOnInit(): void {
@@ -23,5 +24,10 @@ export class LoginComponent implements OnInit {
   Login(form)
   {
     this.authSvc.AuthLogin(form);
+  }
+
+  IrRegistro()
+  {
+    this.route.navigate(['registro']);
   }
 }

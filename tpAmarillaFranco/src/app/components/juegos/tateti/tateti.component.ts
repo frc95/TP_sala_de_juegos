@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { AuthService } from '../../../services/auth.service'
 
 @Component({
   selector: 'app-tateti',
@@ -8,7 +9,7 @@ import { ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 })
 export class TatetiComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth : AuthService) { }
 
   espacios:number=0;
   ganaste:boolean=false;
@@ -560,6 +561,11 @@ export class TatetiComponent implements OnInit {
       document.getElementById('button'+String(numero)).setAttribute('disabled','true');
       this.mapa[numero]=2;
     }
+  }
+
+  GuardarResultado()
+  {
+    this.auth.GuardarPartidaTateti(this.ganadas,this.derrotas,this.empates);
   }
 
 

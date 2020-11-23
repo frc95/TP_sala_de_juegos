@@ -1,18 +1,21 @@
 .numeroOculto{
     
-    padding: 19px 0;
+    padding: 5px 0; /*19*/
     text-align: center;
     overflow: hidden;
+    
 }
 
 .elegirNumero{
     padding: 8px 0;
     text-align: center;
+    
 }
 
 .adivina{
     padding: 20px 0;
     text-align: center;
+    
 }
 
 h1{
@@ -39,4 +42,10 @@ img{
     50% {top:-200px;}
     100% {top:0px;}
     
+}
+
+.resultado{
+    background-color: dodgerblue;
+    padding: 15px 0;
+    text-align: center;
 }

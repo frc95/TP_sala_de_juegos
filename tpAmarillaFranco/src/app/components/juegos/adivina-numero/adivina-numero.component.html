@@ -1,3 +1,9 @@
+<div class="resultado">
+    <h4>Tiene 3 intentos</h4>
+    <img src="../../../../assets/nada.png" id="img0" alt="" height="45" width="45">
+    <img src="../../../../assets/nada.png" id="img1" alt="" height="45" width="45">
+    <img src="../../../../assets/nada.png" id="img2" alt="" height="45" width="45">
+</div>
 <div class="numeroOculto">
     <img src="../../../../assets/cortina.png" id="cortina" alt="" width="230" height="230">
        
@@ -9,7 +15,8 @@
     <input type="number" min="0" max="10" value="0" id="numeroJugador" [(ngModel)]="numeroElegido">
 </div>
 <div class="adivina">
-    <button mat-raised-button color="primary" (click)="Adivinar()">Adivina</button>
+    <button mat-raised-button color="primary" (click)="Adivinar()" [disabled]="!activar">Adivina</button>
+    <button mat-raised-button color="primary" (click)="Reiniciar()">Reiniciar</button>
 </div>
 
 <textarea name="" id="registro" cols="20" rows="4" disabled>{{registro}}</textarea>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-adivina-numero',
@@ -17,7 +18,9 @@ export class AdivinaNumeroComponent implements OnInit {
 
   resultado : string = "Bienvenido";
 
-  constructor() {
+  activar : boolean = true;
+
+  constructor(private sv : AuthService) {
     this.numeroOculto=Math.floor(Math.random() * 11);
     console.log("Numero oculto: "+this.numeroOculto);
   }
@@ -43,7 +46,7 @@ export class AdivinaNumeroComponent implements OnInit {
       else
       {
         this.derrotas++;
-        this.resultado="Segui participando";
+        this.ColocarX();
         this.numeroOculto=Math.floor(Math.random() * 11);
         this.RegistroDatos();
         console.log("Numero oculto: "+this.numeroOculto);
@@ -56,6 +59,37 @@ export class AdivinaNumeroComponent implements OnInit {
   RegistroDatos()
   {
     this.registro="Victorias: "+this.victorias+"\n"+"Derrotas: "+this.derrotas+"\n";
+  }
+
+  ColocarX()
+  {
+    this.resultado="Segui participando";
+    if(this.derrotas==1)
+    {
+      document.images['img0'].src="../../../../assets/x.png";
+    }
+    if(this.derrotas==2)
+    {
+      document.images['img1'].src="../../../../assets/x.png";
+    }
+    if(this.derrotas==3)
+    {
+      document.images['img2'].src="../../../../assets/x.png";
+      this.activar=false;
+      this.resultado="Resultados Guardados. Pulse Reiniciar para seguir jugando";
+      this.sv.GuardarPartidaAdivinaNumero(this.victorias);
+    }
+  }
+
+  Reiniciar()
+  {
+    this.activar=true;
+    document.images['img0'].src="../../../../assets/nada.png";
+    document.images['img1'].src="../../../../assets/nada.png";
+    document.images['img2'].src="../../../../assets/nada.png";
+    this.derrotas=0;
+    this.victorias=0;
+    this.RegistroDatos();
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class MemotestComponent implements OnInit {
 
   mensaje : string="Elija 2 cartas";
 
-  constructor() { 
+  constructor(private sv:AuthService) { 
     this.cartas=this.shuffle();
     console.log(this.cartas);
     this.empezarTemporizador();
@@ -59,14 +60,17 @@ export class MemotestComponent implements OnInit {
         this.cartas[i].desactivar=false;
       }
 
+      this.contador=0;
 
-      setTimeout(() => {
-        this.mensaje="Elija 2 cartas";
-        this.contador=0;
-        if(this.primeraCarta.src!=this.cartas[posicion].src)
-        {
+      if(this.primeraCarta.src!=this.cartas[posicion].src)
+      {
+        this.mensaje="Espere 3 segundos";
+        setTimeout(() => {
+          
+          this.mensaje="Elija 2 cartas";
           this.cartas[posicion].validarFrente = false;
           this.cartas[posicion].desactivar = true;
+
           for(let i=0;i<12;i++)
           {
             if(this.primeraCarta.id==this.cartas[i].id)
@@ -76,11 +80,20 @@ export class MemotestComponent implements OnInit {
               break;
             }
           }
-        }
-        else
-        {
-          this.contadorFinal++;
-        }
+
+          for(let i=0;i<12;i++)
+          {
+            if(this.cartas[i].validarFrente==false)
+            {
+              this.cartas[i].desactivar=true;
+            }
+          }
+
+        }, 3000);
+      }
+      else
+      {
+        this.contadorFinal++;
         for(let i=0;i<12;i++)
         {
           if(this.cartas[i].validarFrente==false)
@@ -88,9 +101,10 @@ export class MemotestComponent implements OnInit {
             this.cartas[i].desactivar=true;
           }
         }
-        this.JuegoTerminado();
-      }, 3000);
-      this.mensaje="Espere 3 segundos";
+      }
+      
+      this.JuegoTerminado();
+      
     }
     
   }
@@ -156,7 +170,8 @@ export class MemotestComponent implements OnInit {
     {
       this.pausar();
       this.contadorFinal=0;
-      this.mensaje="Juego terminado. Reinicie el juego para continuar";
+      this.mensaje="Juego terminado, el tiempo fue guardado. Reinicie el juego para continuar";
+      this.sv.GuardarPartidaMemotest(this.time);
     }
   }
 

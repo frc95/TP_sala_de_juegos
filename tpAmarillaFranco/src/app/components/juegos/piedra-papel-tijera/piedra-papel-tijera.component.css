@@ -59,3 +59,9 @@
     50%  { left:0px; top:100px;}
     100% { left:0px; top:0px;}
 }
+
+.resultado{
+    position:relative;
+    left:20%;
+    top:-5%;
+}

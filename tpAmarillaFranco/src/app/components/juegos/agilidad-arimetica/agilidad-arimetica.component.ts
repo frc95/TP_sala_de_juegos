@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-agilidad-arimetica',
@@ -30,8 +31,9 @@ export class AgilidadArimeticaComponent implements OnInit {
 
   //empezar
   activar : boolean = false;
+  activarEmpezar : boolean = true;
 
-  constructor() {
+  constructor(private sv: AuthService) {
     this.GenerarCuenta();
   }
 
@@ -68,8 +70,9 @@ export class AgilidadArimeticaComponent implements OnInit {
       document.images['img2'].src="../../../../assets/x.png";
       this.pausar();
       this.activar=false;
-      this.mensaje="Si desea comenzar de nuevo pulse el boton Reiniciar";
+      this.mensaje="Resultados guardados. Pulse reiniciar si desea jugar de nuevo.";
       this.derrotas=0;
+      this.sv.GuardarPartidaAgilidadArimetica(this.victorias,this.time);
       this.time=0;
     }
     
@@ -141,14 +144,22 @@ export class AgilidadArimeticaComponent implements OnInit {
 
   empezar()
   {
+    this.activarEmpezar=false;
     this.activar=true;
     this.empezarTemporizador();
   }
   reiniciar()
   {
+    this.activar=false;
+    this.pausar();
+    this.victorias=0;
+    this.derrotas=0;
+    this.time=0;
+    this.activarEmpezar=true;
     this.display = "0:0";
     document.images['img0'].src="../../../../assets/nada.png";
     document.images['img1'].src="../../../../assets/nada.png";
     document.images['img2'].src="../../../../assets/nada.png";
+    this.RegistroDatos();
   }
 }

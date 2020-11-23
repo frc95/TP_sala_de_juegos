@@ -11,7 +11,7 @@
     <button mat-raised-button id="buttonResolver" style="margin-left: 10px;" color="primary" (click)="Resolver()" [disabled]="!activar">Resolver</button>
 </div>
 <div class="resolver">
-    <button mat-raised-button color="primary" (click)="empezar()">Empezar</button>
+    <button mat-raised-button color="primary" (click)="empezar()" [disabled]="!activarEmpezar">Empezar</button>
     <button mat-raised-button style="margin-left: 10px;" color="primary" (click)="reiniciar()">Reiniciar</button>
 </div>
 <div class="tiempo">

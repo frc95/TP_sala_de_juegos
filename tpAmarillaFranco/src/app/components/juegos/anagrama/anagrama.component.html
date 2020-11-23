@@ -1,1 +1,29 @@
-<p>anagrama works!</p>
+<div class="resultado">
+    <h4>Tiene 3 intentos</h4>
+    <img src="../../../../assets/nada.png" id="img0" alt="" height="45" width="45">
+    <img src="../../../../assets/nada.png" id="img1" alt="" height="45" width="45">
+    <img src="../../../../assets/nada.png" id="img2" alt="" height="45" width="45">
+</div>
+
+<div class="cortina">
+	
+    <div class="cortina_envoltura">
+      <input type="checkbox" checked disabled id="checkCortina">
+
+      <div class="cortina_panel curtain_panel_izquierda"></div> 
+      <div class="cortina_contenido"><h1 class="fuente">{{palabraResultado}}</h1></div> 
+      <div class="cortina_panel curtain_panel_derecha"></div>
+    </div> 
+</div> 
+<div class="textoResultado">
+    <label for="" class="labelPalabra">{{palabra}}=</label>
+    <input id="textResultado" type="text" [(ngModel)]="resultadoJugador">
+    <button mat-raised-button id="buttonResolver" style="margin-left: 10px;" color="primary" (click)="Resolver()" [disabled]="!activarBoton">Resolver</button>
+    <button mat-raised-button style="margin-left: 10px;" color="primary" (click)="Reiniciar()">Reiniciar</button>
+</div>
+<div class="tiempo">
+    <h2><b>{{display}}</b></h2>
+</div>
+<div class="tiempo">
+    <h2><b>{{mensaje}}</b></h2>
+</div>

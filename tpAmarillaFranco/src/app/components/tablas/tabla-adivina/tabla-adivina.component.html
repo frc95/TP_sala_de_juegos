@@ -1,0 +1,32 @@
+<mat-form-field *ngIf="mostrarTablaAdivina">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar por usuario, victorias, etc" #input>
+  </mat-form-field>
+  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="mostrarTablaAdivina">
+  
+    
+    <ng-container matColumnDef="usuario">
+      <th mat-header-cell *matHeaderCellDef> Usuario </th>
+      <td mat-cell *matCellDef="let element"> {{element.usuario}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="victorias">
+      <th mat-header-cell *matHeaderCellDef> Aciertos </th>
+      <td mat-cell *matCellDef="let element"> {{element.victorias}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef> Fecha </th>
+      <td mat-cell *matCellDef="let element"> {{element.fecha | date:'d/M/yy, h:mm a'}}</td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No hay resultados de "{{input.value}}"</td>
+    </tr>
+  </table>

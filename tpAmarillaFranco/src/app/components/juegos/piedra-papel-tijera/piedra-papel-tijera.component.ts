@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from '../../../services/storage.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-piedra-papel-tijera',
@@ -7,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PiedraPapelTijeraComponent implements OnInit {
 
+  jugadorEmail : string;
+
   opcion : number;
 
   ganadas : number=0;
@@ -14,9 +18,14 @@ export class PiedraPapelTijeraComponent implements OnInit {
   empates : number=0;
   registro : string="Ganadas: "+String(this.ganadas)+"\n"+"Perdidas: "+String(this.perdidas)+"\n"+"Empates: "+String(this.empates)+"\n";
 
-  constructor() { }
+  constructor(private db:StorageService, private auth:AuthService) { }
 
   ngOnInit(): void {
+    this.auth.ObtenerEmail().subscribe(auth=>{
+      if(auth){
+        this.jugadorEmail  = auth.email;
+       }
+    });
   }
 
   opcionPiedra(){
@@ -161,5 +170,10 @@ export class PiedraPapelTijeraComponent implements OnInit {
   RegistroDatos()
   {
     this.registro="Ganadas: "+String(this.ganadas)+"\n"+"Perdidas: "+String(this.perdidas)+"\n"+"Empates: "+String(this.empates)+"\n";
+  }
+
+  GuardarResultado()
+  {
+    this.auth.GuardarPartidaPPT(this.ganadas,this.perdidas,this.empates);
   }
 }

@@ -8,6 +8,8 @@
       <a mat-list-item href="#" [routerLink]="['/navigation', {outlets: {'juegos':['ruta-facil']} }]" >Facil</a>
       <a mat-list-item href="#" [routerLink]="['/navigation', {outlets: {'juegos':['ruta-normal']} }]">Normal</a>
       <a mat-list-item href="#" [routerLink]="['/navigation', {outlets: {'juegos':['ruta-dificil']} }]">Dificil</a>
+      <br>
+      <a mat-list-item style="cursor: pointer;" (click)="MostrarTabla()">Resultados</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -20,7 +22,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Salon de juegos de Amarilla Franco</span>
+      <span>Bienvenido {{emailUsuario}}</span>
       <span class="espacios"></span>
       <a href="#" class="logout" (click)="Logout($event)">Logout</a>
     </mat-toolbar>

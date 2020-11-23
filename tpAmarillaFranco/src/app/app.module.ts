@@ -19,6 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 
 import { RutaNormalComponent } from './components/ruta-normal/ruta-normal.component';
 import { RutaDificilComponent } from './components/ruta-dificil/ruta-dificil.component';
@@ -35,6 +37,15 @@ import { environment } from '../environments/environment';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SelectComponent } from './components/tablas/select/select.component';
+import { TablaPPTComponent } from './components/tablas/tabla-ppt/tabla-ppt.component';
+import { TablaTatetiComponent } from './components/tablas/tabla-tateti/tabla-tateti.component';
+import { ResultadosComponent } from './components/tablas/resultados/resultados.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { TablaAdivinaComponent } from './components/tablas/tabla-adivina/tabla-adivina.component';
+import { TablaArimeticaComponent } from './components/tablas/tabla-arimetica/tabla-arimetica.component';
+import { MinutosSegundosPipe } from './pipes/minutos-segundos.pipe';
+import { TablaMemotestComponent } from './components/tablas/tabla-memotest/tabla-memotest.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +61,16 @@ import { CommonModule } from '@angular/common';
     AnagramaComponent,
     MemotestComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    SelectComponent,
+    TablaPPTComponent,
+    TablaTatetiComponent,
+    ResultadosComponent,
+    RegistroComponent,
+    TablaAdivinaComponent,
+    TablaArimeticaComponent,
+    MinutosSegundosPipe,
+    TablaMemotestComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +91,9 @@ import { CommonModule } from '@angular/common';
     AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    MatSelectModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

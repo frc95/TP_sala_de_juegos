@@ -3,21 +3,21 @@ import { MatTableDataSource } from '@angular/material/table';
 import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
-  selector: 'app-tabla-arimetica',
-  templateUrl: './tabla-arimetica.component.html',
-  styleUrls: ['./tabla-arimetica.component.css']
+  selector: 'app-tabla-anagrama',
+  templateUrl: './tabla-anagrama.component.html',
+  styleUrls: ['./tabla-anagrama.component.css']
 })
-export class TablaArimeticaComponent implements OnInit {
+export class TablaAnagramaComponent implements OnInit {
 
-  @Input() mostrarTablaArimetica: boolean;
+  @Input() mostrarTablaAnagrama: boolean;
 
-  displayedColumns: string[] = ['usuario', 'victorias', 'tiempo' ,'fecha'];
+  displayedColumns: string[] = ['usuario', 'aciertos','Errores','tiempo','fecha'];
   dataSource;
 
   constructor(private db : StorageService) { }
 
   ngOnInit(): void {
-    this.db.TraerListado("agilidad").subscribe(doc =>{
+    this.db.TraerListado("anagrama").subscribe(doc =>{
       this.dataSource = new MatTableDataSource(doc);
     });
   }

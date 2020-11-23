@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 interface Juego {
   value: string;
   viewValue: string;
-  ruta: string;
 }
 
 @Component({
@@ -23,13 +22,17 @@ export class SelectComponent implements OnInit {
   mostrarAnagrama: boolean = false;
   mostrarMemotest: boolean = false;
 
+  mostrarTBB : boolean = false;
+
   juegos: Juego[] = [
-    {value: '0', viewValue: 'Adivina numero', ruta: ''},
-    {value: '1', viewValue: 'Agilidad arimetica', ruta: ''},
-    {value: '2', viewValue: 'Anagrama', ruta: ''},
-    {value: '3', viewValue: 'Memotest', ruta: ''},
-    {value: '4', viewValue: 'Piedra Papel Tijera', ruta: "['/navigation', {outlets: {'resultados':['ResultPPT']} }]"},
-    {value: '5', viewValue: 'TaTeTi', ruta: "['/navigation', {outlets: {'resultados':['ResultTateti']} }]"}
+    {value: '0', viewValue: 'Adivina numero'},
+    {value: '1', viewValue: 'Agilidad arimetica'},
+    {value: '2', viewValue: 'Anagrama'},
+    {value: '3', viewValue: 'Memotest'},
+    {value: '4', viewValue: 'Piedra Papel Tijera'},
+    {value: '5', viewValue: 'TaTeTi'},
+    {value: '6', viewValue: 'The blue ball'},
+
   ];
 
   constructor(private router : Router) { }
@@ -47,6 +50,7 @@ export class SelectComponent implements OnInit {
         this.mostrarAgilidad = false;
         this.mostrarMemotest = false;
         this.mostrarAnagrama = false;
+        this.mostrarTBB = false;
       
       }
       else if(value=="1")
@@ -57,6 +61,7 @@ export class SelectComponent implements OnInit {
         this.mostrarAgilidad = true;
         this.mostrarMemotest = false;
         this.mostrarAnagrama = false;
+        this.mostrarTBB = false;
       }
       else if(value=="2")
       {
@@ -66,6 +71,7 @@ export class SelectComponent implements OnInit {
         this.mostrarAgilidad = false;
         this.mostrarMemotest = false;
         this.mostrarAnagrama = true;
+        this.mostrarTBB = false;
       }
       else if(value=="3")
       {
@@ -75,6 +81,7 @@ export class SelectComponent implements OnInit {
         this.mostrarAgilidad = false;
         this.mostrarMemotest = true;
         this.mostrarAnagrama = false;
+        this.mostrarTBB = false;
       }
       else if(value=="4")
       {
@@ -84,6 +91,7 @@ export class SelectComponent implements OnInit {
         this.mostrarAgilidad = false;
         this.mostrarMemotest = false;
         this.mostrarAnagrama = false;
+        this.mostrarTBB = false;
       }
       else if(value=="5")
       {
@@ -93,6 +101,17 @@ export class SelectComponent implements OnInit {
         this.mostrarAgilidad = false;
         this.mostrarMemotest = false;
         this.mostrarAnagrama = false;
+        this.mostrarTBB = false;
+      }
+      else if(value=="6")
+      {
+        this.mostrarAdivina= false;
+        this.mostrarPPT = false;
+        this.mostrarTateti = false;
+        this.mostrarAgilidad = false;
+        this.mostrarMemotest = false;
+        this.mostrarAnagrama = false;
+        this.mostrarTBB = true;
       }
   }
 

@@ -3,21 +3,21 @@ import { MatTableDataSource } from '@angular/material/table';
 import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
-  selector: 'app-tabla-arimetica',
-  templateUrl: './tabla-arimetica.component.html',
-  styleUrls: ['./tabla-arimetica.component.css']
+  selector: 'app-tabla-tbb',
+  templateUrl: './tabla-tbb.component.html',
+  styleUrls: ['./tabla-tbb.component.css']
 })
-export class TablaArimeticaComponent implements OnInit {
+export class TablaTBBComponent implements OnInit {
 
-  @Input() mostrarTablaArimetica: boolean;
+  @Input() mostrarTablaTBB: boolean;
 
-  displayedColumns: string[] = ['usuario', 'victorias', 'tiempo' ,'fecha'];
+  displayedColumns: string[] = ['usuario', 'tiempo' ,'fecha'];
   dataSource;
 
   constructor(private db : StorageService) { }
 
   ngOnInit(): void {
-    this.db.TraerListado("agilidad").subscribe(doc =>{
+    this.db.TraerListado("TBB").subscribe(doc =>{
       this.dataSource = new MatTableDataSource(doc);
     });
   }

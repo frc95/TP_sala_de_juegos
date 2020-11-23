@@ -46,6 +46,9 @@ import { TablaAdivinaComponent } from './components/tablas/tabla-adivina/tabla-a
 import { TablaArimeticaComponent } from './components/tablas/tabla-arimetica/tabla-arimetica.component';
 import { MinutosSegundosPipe } from './pipes/minutos-segundos.pipe';
 import { TablaMemotestComponent } from './components/tablas/tabla-memotest/tabla-memotest.component';
+import { TablaAnagramaComponent } from './components/tablas/tabla-anagrama/tabla-anagrama.component';
+import { SeptimoJuegoComponent } from './components/juegos/septimo-juego/septimo-juego.component';
+import { TablaTBBComponent } from './components/tablas/tabla-tbb/tabla-tbb.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +73,10 @@ import { TablaMemotestComponent } from './components/tablas/tabla-memotest/tabla
     TablaAdivinaComponent,
     TablaArimeticaComponent,
     MinutosSegundosPipe,
-    TablaMemotestComponent
+    TablaMemotestComponent,
+    TablaAnagramaComponent,
+    SeptimoJuegoComponent,
+    TablaTBBComponent
   ],
   imports: [
     BrowserModule,

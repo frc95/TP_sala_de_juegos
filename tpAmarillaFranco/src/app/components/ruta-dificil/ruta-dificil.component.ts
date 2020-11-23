@@ -4,6 +4,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
 import { AnagramaComponent } from '../juegos/anagrama/anagrama.component';
 import { MemotestComponent } from '../juegos/memotest/memotest.component';
+import { SeptimoJuegoComponent } from '../juegos/septimo-juego/septimo-juego.component';
 
 @Component({
   selector: 'app-ruta-dificil',
@@ -17,13 +18,15 @@ export class RutaDificilComponent {
       if (matches) {
         return [
           { title: 'Anagrama', cols: 1, rows: 1, foto:'../../../assets/anagrama.png' },
-          { title: 'Memotest', cols: 1, rows: 1, foto:'../../../assets/memotest.png' }
+          { title: 'Memotest', cols: 1, rows: 1, foto:'../../../assets/memotest.png' },
+          { title: 'The blue ball', cols: 1, rows: 1, foto:'../../../assets/pelotaFondo.png' }
         ];
       }
 
       return [
         { title: 'Anagrama', cols: 1, rows: 1, foto:'../../../assets/anagrama.png' },
-        { title: 'Memotest', cols: 1, rows: 1, foto:'../../../assets/memotest.png' }
+        { title: 'Memotest', cols: 1, rows: 1, foto:'../../../assets/memotest.png' },
+        { title: 'The blue ball', cols: 1, rows: 1, foto:'../../../assets/pelotaFondo.png' }
       ];
     })
   );
@@ -39,6 +42,10 @@ export class RutaDificilComponent {
     if(juego.title=="Memotest")
     {
       this.openDialog(MemotestComponent);
+    }
+    if(juego.title=="The blue ball")
+    {
+      this.openDialog(SeptimoJuegoComponent);
     }
   }
 

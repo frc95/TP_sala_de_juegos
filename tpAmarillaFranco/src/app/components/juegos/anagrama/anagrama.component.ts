@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-anagrama',
@@ -21,24 +22,22 @@ export class AnagramaComponent implements OnInit {
   ];
   palabra : string="";
   index : number=0;
-  //indexPalabra : number=0;
   palabraResultado : string="";
   activarBoton : boolean=true;
   aciertos : number = 0;
   mensaje : string = "Escriba el posible anagrama";
   contadorDerrota : number = 0;
 
-  //variables para el temporizador
+  //Variable del temporizador
   time: number = 0;
   display = "0:0";
   interval;
 
 
-  constructor() { }
+  constructor(private sv : AuthService) { }
 
   ngOnInit(): void {
-    //this.index=Math.floor(Math.random()*8);
-    //this.indexPalabra=Math.floor(Math.random()*2);
+    
     this.palabra=this.palabras[this.index][0];
     this.palabraResultado=this.palabras[this.index][1];
     console.log(this.palabraResultado);
@@ -89,6 +88,7 @@ export class AnagramaComponent implements OnInit {
           this.pausar();
           this.activarBoton=false;
           this.mensaje="Aciertos "+this.aciertos+" de 8. Los resultados fueron guardados";
+          this.sv.GuardarPartidaAnagrama(this.aciertos,this.time,this.contadorDerrota);
     }
     else
     {
@@ -160,6 +160,7 @@ export class AnagramaComponent implements OnInit {
   {
     this.pausar();
     this.activarBoton=false;
+    this.sv.GuardarPartidaAnagrama(this.aciertos,this.time,this.contadorDerrota);
   }
 
 }

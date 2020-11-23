@@ -144,6 +144,35 @@ export class AuthService {
       
     });
   }
+
+  GuardarPartidaAnagrama(aciertos : number, time: number, contadorDerrota: number)
+  {
+    let fecha = Date.now();
+    let id = this.getCurrentUser() + ".anagrama";
+    
+    this.db.collection("anagrama").doc(id).set({
+      id:id,
+      usuario: this.getCurrentUser(),
+      fecha: fecha,
+      tiempo : time,
+      aciertos : aciertos,
+      Errores : contadorDerrota
+    });
+  }
+
+  GuardarPartidaTBB(time:number)
+  {
+    let fecha = Date.now();
+    let id = this.getCurrentUser() + ".TBB";
+    
+    this.db.collection("TBB").doc(id).set({
+      id:id,
+      usuario: this.getCurrentUser(),
+      fecha: fecha,
+      tiempo : time
+      
+    });
+  }
   
     
 

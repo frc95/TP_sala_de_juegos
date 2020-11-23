@@ -1,9 +1,9 @@
-<mat-form-field *ngIf="mostrarTablaTateti">
+<mat-form-field *ngIf="mostrarTablaAnagrama">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar por usuario, victorias, etc" #input>
   </mat-form-field>
   
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="mostrarTablaTateti">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="mostrarTablaAnagrama">
   
     
     <ng-container matColumnDef="usuario">
@@ -11,27 +11,22 @@
       <td mat-cell *matCellDef="let element"> {{element.usuario}} </td>
     </ng-container>
   
-    <ng-container matColumnDef="puntos">
-      <th mat-header-cell *matHeaderCellDef> Puntos </th>
-      <td mat-cell *matCellDef="let element"> {{element.puntos}} </td>
-    </ng-container>
     
-    <ng-container matColumnDef="victorias">
-      <th mat-header-cell *matHeaderCellDef> Victorias </th>
-      <td mat-cell *matCellDef="let element"> {{element.victorias}} </td>
+    <ng-container matColumnDef="aciertos">
+      <th mat-header-cell *matHeaderCellDef> Aciertos </th>
+      <td mat-cell *matCellDef="let element"> {{element.aciertos}} </td>
     </ng-container>
-  
-    
-    <ng-container matColumnDef="derrotas">
-      <th mat-header-cell *matHeaderCellDef> Derrotas </th>
-      <td mat-cell *matCellDef="let element"> {{element.derrotas}} </td>
+
+    <ng-container matColumnDef="Errores">
+        <th mat-header-cell *matHeaderCellDef> Errores </th>
+        <td mat-cell *matCellDef="let element"> {{element.Errores}} </td>
     </ng-container>
-  
-    
-    <ng-container matColumnDef="empates">
-      <th mat-header-cell *matHeaderCellDef> Empates </th>
-      <td mat-cell *matCellDef="let element"> {{element.empates}} </td>
+
+    <ng-container matColumnDef="tiempo">
+        <th mat-header-cell *matHeaderCellDef> Tiempo </th>
+        <td mat-cell *matCellDef="let element"> {{element.tiempo | minutosSegundos}} </td>
     </ng-container>
+
 
     <ng-container matColumnDef="fecha">
       <th mat-header-cell *matHeaderCellDef> Fecha </th>

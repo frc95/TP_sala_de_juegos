@@ -1,9 +1,13 @@
 <mat-form-field *ngIf="mostrarTablaAdivina">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar por usuario, victorias, etc" #input>
-  </mat-form-field>
-  
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="mostrarTablaAdivina">
+</mat-form-field>
+
+<section *ngIf="mostrarTablaAdivina" style="margin: 12px 0;">
+    <mat-checkbox [(ngModel)]="checked" (click)="MostrarTop()">Mostrar Top 3 mejores partidas</mat-checkbox>
+</section>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="mostrarTablaAdivina">
   
     
     <ng-container matColumnDef="usuario">
@@ -29,4 +33,4 @@
     <tr class="mat-row" *matNoDataRow>
       <td class="mat-cell" colspan="4">No hay resultados</td>
     </tr>
-  </table>
+</table>

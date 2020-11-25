@@ -9,23 +9,22 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class PiedraPapelTijeraComponent implements OnInit {
 
-  jugadorEmail : string;
+  
 
   opcion : number;
 
   ganadas : number=0;
   perdidas : number=0;
   empates : number=0;
-  registro : string="Ganadas: "+String(this.ganadas)+"\n"+"Perdidas: "+String(this.perdidas)+"\n"+"Empates: "+String(this.empates)+"\n";
+  puntos : number=0;
+
+  registro : string="Ganadas: "+String(this.ganadas)+"\n"+"Perdidas: "+String(this.perdidas)+"\n"+"Empates: "+String(this.empates)+"\n"+"Puntos: "+String(this.puntos)+"\n";
+
 
   constructor(private db:StorageService, private auth:AuthService) { }
 
   ngOnInit(): void {
-    this.auth.ObtenerEmail().subscribe(auth=>{
-      if(auth){
-        this.jugadorEmail  = auth.email;
-       }
-    });
+    
   }
 
   opcionPiedra(){
@@ -98,12 +97,14 @@ export class PiedraPapelTijeraComponent implements OnInit {
       {
         console.log("Empate"); 
         this.empates++;
+        this.puntos=this.puntos+1;
         this.RegistroDatos();
       }
       else if(this.opcion==1)
       {
         console.log("Ganaste");
         this.ganadas++;
+        this.puntos=this.puntos+3;
         this.RegistroDatos();
       }
       else if(this.opcion==2)
@@ -128,12 +129,14 @@ export class PiedraPapelTijeraComponent implements OnInit {
       else if(this.opcion==1)
       {
         console.log("Empate");
+        this.puntos=this.puntos+1;
         this.empates++;
         this.RegistroDatos();
       }
       else if(this.opcion==2)
       {
         console.log("Ganaste");
+        this.puntos=this.puntos+3;
         this.ganadas++;
         this.RegistroDatos();
       }
@@ -147,6 +150,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
       if(this.opcion==0)
       {
         console.log("Ganaste");
+        this.puntos=this.puntos+3;
         this.ganadas++;
         this.RegistroDatos();
       }
@@ -159,6 +163,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
       else if(this.opcion==2)
       {
         console.log("Empate");
+        this.puntos=this.puntos+1;
         this.empates++;
         this.RegistroDatos();
       }
@@ -169,11 +174,16 @@ export class PiedraPapelTijeraComponent implements OnInit {
 
   RegistroDatos()
   {
-    this.registro="Ganadas: "+String(this.ganadas)+"\n"+"Perdidas: "+String(this.perdidas)+"\n"+"Empates: "+String(this.empates)+"\n";
+    this.registro="Ganadas: "+String(this.ganadas)+"\n"+"Perdidas: "+String(this.perdidas)+"\n"+"Empates: "+String(this.empates)+"\n"+"Puntos: "+String(this.puntos)+"\n";
   }
 
   GuardarResultado()
   {
     this.auth.GuardarPartidaPPT(this.ganadas,this.perdidas,this.empates);
+    this.ganadas=0;
+    this.perdidas=0;
+    this.empates=0;
+    this.puntos=0;
+    this.RegistroDatos();
   }
 }

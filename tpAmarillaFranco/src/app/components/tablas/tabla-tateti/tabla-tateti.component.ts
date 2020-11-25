@@ -10,6 +10,7 @@ import { StorageService } from '../../../services/storage.service';
 export class TablaTatetiComponent implements OnInit {
 
   @Input() mostrarTablaTateti: boolean;
+  checked : boolean = false;
 
   displayedColumns: string[] = ['usuario','puntos','victorias', 'derrotas', 'empates','fecha'];
   dataSource
@@ -17,13 +18,30 @@ export class TablaTatetiComponent implements OnInit {
   constructor(private db : StorageService) { }
 
   ngOnInit(): void {
-    this.db.TraerListado("tateti").subscribe(doc =>{
+    this.db.TraerListadoOrdenadoPorPuntos("tateti").subscribe(doc =>{
       this.dataSource = new MatTableDataSource(doc);
     });
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    
+  }
+
+  MostrarTop()
+  {
+    if(this.checked==false)
+    {
+      this.db.TraerTopPorPuntos("tateti").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
+    else
+    {
+      this.db.TraerListadoOrdenadoPorPuntos("tateti").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
     
   }
 

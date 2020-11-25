@@ -24,18 +24,14 @@ export class AuthService {
 
   AuthLogin(form)
   {
-    try{
-      const rta = this.auth.signInWithEmailAndPassword(form.value.email,form.value.password);
-      console.log(rta);
-
-      setTimeout(() => {
-        this.route.navigate(['navigation']);
-      }, 1000);
-    }
-    catch(error){
-      console.log(error);
-    
-    }
+    //return this.auth.signInWithEmailAndPassword(form.value.email,form.value.password);
+    return new Promise((resolve, rejected) =>{
+      this.auth.signInWithEmailAndPassword(form.value.email,form.value.password)
+      .then(user => {
+        resolve(user);
+      })
+      .catch(error => rejected(error));
+    })
   }
 
   AuthLogout()
@@ -61,7 +57,6 @@ export class AuthService {
           fecha: fecha
         });
         resolve(user);
-        this.route.navigate(['']);
       })
       .catch(error => rejected(error));
     });
@@ -104,7 +99,7 @@ export class AuthService {
   GuardarPartidaAdivinaNumero(victorias:number)
   {
     let fecha = Date.now();
-    let id = this.getCurrentUser() + ".adivina";
+    let id = this.getCurrentUser()+ fecha + ".adivina";
     
     this.db.collection("adivina").doc(id).set({
       id:id,
@@ -119,7 +114,7 @@ export class AuthService {
   GuardarPartidaAgilidadArimetica(victorias:number, time:number)
   {
     let fecha = Date.now();
-    let id = this.getCurrentUser() + ".agilidad";
+    let id = this.getCurrentUser()+ fecha + ".agilidad";
     
     this.db.collection("agilidad").doc(id).set({
       id:id,
@@ -134,7 +129,7 @@ export class AuthService {
   GuardarPartidaMemotest(time:number)
   {
     let fecha = Date.now();
-    let id = this.getCurrentUser() + ".memotest";
+    let id = this.getCurrentUser()+ fecha + ".memotest";
     
     this.db.collection("memotest").doc(id).set({
       id:id,
@@ -148,14 +143,14 @@ export class AuthService {
   GuardarPartidaAnagrama(aciertos : number, time: number, contadorDerrota: number)
   {
     let fecha = Date.now();
-    let id = this.getCurrentUser() + ".anagrama";
+    let id = this.getCurrentUser()+ fecha + ".anagrama";
     
     this.db.collection("anagrama").doc(id).set({
       id:id,
       usuario: this.getCurrentUser(),
       fecha: fecha,
       tiempo : time,
-      aciertos : aciertos,
+      victorias : aciertos,
       Errores : contadorDerrota
     });
   }
@@ -163,8 +158,8 @@ export class AuthService {
   GuardarPartidaTBB(time:number)
   {
     let fecha = Date.now();
-    let id = this.getCurrentUser() + ".TBB";
-    
+    let id = this.getCurrentUser()+ fecha + ".TBB";
+
     this.db.collection("TBB").doc(id).set({
       id:id,
       usuario: this.getCurrentUser(),
@@ -174,7 +169,11 @@ export class AuthService {
     });
   }
   
-    
+  datos;
+  ObtenerDatos(datos)
+  {
+    console.log(datos);
+  }
 
   getCurrentUser()
   {

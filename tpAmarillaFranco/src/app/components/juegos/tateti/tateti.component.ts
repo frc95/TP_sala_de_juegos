@@ -19,7 +19,8 @@ export class TatetiComponent implements OnInit {
   ganadas : number=0;
   derrotas : number=0;
   empates : number=0;
-  registro : string="Ganadas: "+String(this.ganadas)+"\n"+"Derrotas: "+String(this.derrotas)+"\n"+"Empates: "+String(this.empates)+"\n";
+  puntos : number=0;
+  registro : string="Ganadas: "+String(this.ganadas)+"\n"+"Derrotas: "+String(this.derrotas)+"\n"+"Empates: "+String(this.empates)+"\n"+"Puntos: "+String(this.puntos)+"\n";
 
   mapa : any= [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -123,6 +124,7 @@ export class TatetiComponent implements OnInit {
         {
           console.log("Empate");
           this.empates++;
+          this.puntos=this.puntos+1;
           this.RegistroDatos();
         }
         else
@@ -173,7 +175,7 @@ export class TatetiComponent implements OnInit {
   }
   RegistroDatos()
   {
-    this.registro="Ganadas: "+String(this.ganadas)+"\n"+"Derrotas: "+String(this.derrotas)+"\n"+"Empates: "+String(this.empates)+"\n";
+    this.registro="Ganadas: "+String(this.ganadas)+"\n"+"Derrotas: "+String(this.derrotas)+"\n"+"Empates: "+String(this.empates)+"\n"+"Puntos: "+String(this.puntos)+"\n";;
   }
 
   Victoria()
@@ -189,6 +191,7 @@ export class TatetiComponent implements OnInit {
         }     
       }
       this.ganadas++;
+      this.puntos=this.puntos+3;
 
     }
     if(this.mapa[3]==1 && this.mapa[4]==1 && this.mapa[5]==1)
@@ -201,6 +204,7 @@ export class TatetiComponent implements OnInit {
         }     
       }
       this.ganadas++;
+      this.puntos=this.puntos+3;
     }
     if(this.mapa[6]==1 && this.mapa[7]==1 && this.mapa[8]==1)
     {
@@ -212,6 +216,7 @@ export class TatetiComponent implements OnInit {
         }     
       }
       this.ganadas++;
+      this.puntos=this.puntos+3;
     }
     //Vertical
     if(this.mapa[0]==1 && this.mapa[3]==1 && this.mapa[6]==1)
@@ -224,6 +229,7 @@ export class TatetiComponent implements OnInit {
         }     
       }
       this.ganadas++;
+      this.puntos=this.puntos+3;
     }
     if(this.mapa[1]==1 && this.mapa[4]==1 && this.mapa[7]==1)
     {
@@ -235,6 +241,7 @@ export class TatetiComponent implements OnInit {
         }     
       }
       this.ganadas++;
+      this.puntos=this.puntos+3;
     }
     if(this.mapa[2]==1 && this.mapa[5]==1 && this.mapa[8]==1)
     {
@@ -246,6 +253,7 @@ export class TatetiComponent implements OnInit {
         }     
       }
       this.ganadas++;
+      this.puntos=this.puntos+3;
     }
     //Diagonales
     if(this.mapa[0]==1 && this.mapa[4]==1 && this.mapa[8]==1)
@@ -258,6 +266,7 @@ export class TatetiComponent implements OnInit {
         }     
       }
       this.ganadas++;
+      this.puntos=this.puntos+3;
     }
     if(this.mapa[6]==1 && this.mapa[4]==1 && this.mapa[2]==1)
     {
@@ -269,6 +278,7 @@ export class TatetiComponent implements OnInit {
         }     
       }
       this.ganadas++;
+      this.puntos=this.puntos+3;
     }
     this.RegistroDatos();
   }
@@ -566,6 +576,11 @@ export class TatetiComponent implements OnInit {
   GuardarResultado()
   {
     this.auth.GuardarPartidaTateti(this.ganadas,this.derrotas,this.empates);
+    this.ganadas=0;
+    this.empates=0;
+    this.derrotas=0;
+    this.puntos=0;
+    this.RegistroDatos();
   }
 
 

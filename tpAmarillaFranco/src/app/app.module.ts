@@ -49,6 +49,7 @@ import { TablaMemotestComponent } from './components/tablas/tabla-memotest/tabla
 import { TablaAnagramaComponent } from './components/tablas/tabla-anagrama/tabla-anagrama.component';
 import { SeptimoJuegoComponent } from './components/juegos/septimo-juego/septimo-juego.component';
 import { TablaTBBComponent } from './components/tablas/tabla-tbb/tabla-tbb.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -99,7 +100,8 @@ import { TablaTBBComponent } from './components/tablas/tabla-tbb/tabla-tbb.compo
     FormsModule,
     CommonModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

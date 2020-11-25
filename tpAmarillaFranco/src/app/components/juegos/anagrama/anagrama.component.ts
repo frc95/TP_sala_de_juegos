@@ -11,10 +11,10 @@ export class AnagramaComponent implements OnInit {
   resultadoJugador : string="";
 
   palabras = [
-    ["SOLTAD", "TOLDAS"],
+    ["ROMA", "AMOR"],
     ["RIESGO", "SERGIO"],
     ["AGONISTA", "SANTIAGO"],
-    ["CALOR", "CARLA"],
+    ["CALOR", "CARLO"],
     ["PODER", "PEDRO"],
     ["SAUNAS", "SUSANA"],
     ["TRAMA", "MARTA"],
@@ -38,31 +38,47 @@ export class AnagramaComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.palabra=this.palabras[this.index][0];
-    this.palabraResultado=this.palabras[this.index][1];
-    console.log(this.palabraResultado);
+    this.palabra=this.palabras[this.index][1];
+    this.palabraResultado=this.palabras[this.index][0];
+    console.log(this.palabra);
 
     this.empezarTemporizador();
+
+    document.getElementById('checkCortina').removeAttribute('checked');
   }
 
   Resolver()
   {
-    if(this.resultadoJugador.toUpperCase()==this.palabraResultado)
+    let validar=this.esAnagrama(this.resultadoJugador,this.palabraResultado);
+    if(validar)
     {
       this.aciertos++;
       console.log("Aciertos "+this.aciertos+" de 8");
+      this.mensaje="Bien sigue asi!!!";
     }
     else
     {
+      this.mensaje="Mal pero sigue intentando";
       this.ColocarX();
     }
 
-    document.getElementById('checkCortina').removeAttribute('checked');
     this.activarBoton=false;
+    document.getElementById('checkCortina').setAttribute('checked','true');
     setTimeout(() =>{
       this.index++;
-      document.getElementById('checkCortina').setAttribute('checked','true');
 
+      let cortina = document.getElementById('checkCortina');
+      if(cortina)
+      {
+        cortina.removeAttribute('checked');
+      }
+      //document.getElementById('checkCortina').removeAttribute('checked');
+
+      if(this.index!=8)
+      {
+        this.palabra=this.palabras[this.index][1];
+        this.palabraResultado=this.palabras[this.index][0];
+      }
       setTimeout(() =>{
 
         if(this.contadorDerrota==3)
@@ -73,12 +89,44 @@ export class AnagramaComponent implements OnInit {
         {
           this.activarBoton=true;
           this.terminarJuego();
-          console.log(this.palabraResultado);
+          console.log(this.palabra);
         }
       }, 1000);
     }, 3000);
 
+  }
 
+  esAnagrama(palabra, posibleAnagrama){
+
+    //Primero validamos si son iguales
+    if(palabra.toLowerCase() === posibleAnagrama.toLowerCase()) 
+    {
+      return false;
+    }
+
+    // Cambiar a minúsculas ambas cadenas
+    palabra = palabra.toLowerCase();
+    posibleAnagrama = posibleAnagrama.toLowerCase();
+    
+    // Convertir ambas cadenas en un arreglo
+    palabra = palabra.split("");
+    posibleAnagrama = posibleAnagrama.split("");
+    
+    // Ordenar ese arreglo
+    palabra = palabra.sort();
+    posibleAnagrama = posibleAnagrama.sort();
+    
+    // Una vez ordenados, los convertimos a cadena nuevamente
+    palabra = palabra.join("");
+    posibleAnagrama = posibleAnagrama.join("");
+    
+    // Finalmente comparamos
+    
+    if(palabra === posibleAnagrama){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   terminarJuego()
@@ -90,11 +138,7 @@ export class AnagramaComponent implements OnInit {
           this.mensaje="Aciertos "+this.aciertos+" de 8. Los resultados fueron guardados";
           this.sv.GuardarPartidaAnagrama(this.aciertos,this.time,this.contadorDerrota);
     }
-    else
-    {
-      this.palabra=this.palabras[this.index][0];
-      this.palabraResultado=this.palabras[this.index][1];
-    }
+    
   }
 
   empezarTemporizador(){
@@ -122,8 +166,8 @@ export class AnagramaComponent implements OnInit {
   {
     this.pausar();
     this.activarBoton=true;
-    this.palabra=this.palabras[0][0];
-    this.palabraResultado=this.palabras[0][1];
+    this.palabra=this.palabras[0][1];
+    this.palabraResultado=this.palabras[0][0];
     this.index=0;
     this.time=0;
     this.display = "0:0";

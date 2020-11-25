@@ -11,6 +11,7 @@ import { StorageService } from '../../../services/storage.service';
 export class TablaPPTComponent implements OnInit {
 
   @Input() mostrarTablaPPT: boolean;
+  checked : boolean = false;
 
   displayedColumns: string[] = ['usuario','puntos', 'victorias', 'derrotas', 'empates', 'fecha'];
   dataSource
@@ -18,7 +19,7 @@ export class TablaPPTComponent implements OnInit {
   constructor(private db : StorageService) { }
 
   ngOnInit(): void {
-    this.db.TraerListado("PPT").subscribe(doc =>{
+    this.db.TraerListadoOrdenadoPorPuntos("PPT").subscribe(doc =>{
       this.dataSource = new MatTableDataSource(doc);
     });
   }
@@ -26,6 +27,23 @@ export class TablaPPTComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    
+  }
+
+  MostrarTop()
+  {
+    if(this.checked==false)
+    {
+      this.db.TraerTopPorPuntos("PPT").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
+    else
+    {
+      this.db.TraerListadoOrdenadoPorPuntos("PPT").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
     
   }
 

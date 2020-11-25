@@ -1,9 +1,17 @@
 <mat-form-field *ngIf="mostrarTablaTBB">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar por usuario, victorias, etc" #input>
-  </mat-form-field>
+</mat-form-field>
+
+<section *ngIf="mostrarTablaTBB" style="margin: 12px 0;">
+    <mat-checkbox [(ngModel)]="checked" (click)="MostrarTop()">Mostrar Top 3 mejores partidas</mat-checkbox>
+</section>
+
+<section *ngIf="mostrarTablaTBB" style="margin: 12px 0;">
+  <mat-checkbox [(ngModel)]="checkedUsuario" (click)="MostrarPartidasUser()">Mostrar partidas del usuario</mat-checkbox>
+</section>
   
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="mostrarTablaTBB">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="mostrarTablaTBB">
   
     
     <ng-container matColumnDef="usuario">

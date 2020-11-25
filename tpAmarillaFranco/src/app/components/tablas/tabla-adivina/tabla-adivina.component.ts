@@ -10,6 +10,7 @@ import { StorageService } from 'src/app/services/storage.service';
 export class TablaAdivinaComponent implements OnInit {
 
   @Input() mostrarTablaAdivina: boolean;
+  checked : boolean = false;
 
   displayedColumns: string[] = ['usuario', 'victorias', 'fecha'];
   dataSource
@@ -17,7 +18,7 @@ export class TablaAdivinaComponent implements OnInit {
   constructor(private db : StorageService) { }
 
   ngOnInit(): void {
-    this.db.TraerListado("adivina").subscribe(doc =>{
+    this.db.TraerListadoOrdenadoPorVictorias("adivina").subscribe(doc =>{
       this.dataSource = new MatTableDataSource(doc);
     });
   }
@@ -25,6 +26,23 @@ export class TablaAdivinaComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    
+  }
+
+  MostrarTop()
+  {
+    if(this.checked==false)
+    {
+      this.db.TraerTopPorVictorias("adivina").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
+    else
+    {
+      this.db.TraerListadoOrdenadoPorVictorias("adivina").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
     
   }
 

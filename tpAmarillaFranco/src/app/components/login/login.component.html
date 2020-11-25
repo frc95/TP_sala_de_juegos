@@ -13,8 +13,13 @@
                     <input type="password" matInput placeholder="contraseña" formControlName="password">
                 </mat-form-field>
             </p>
+            <div class="alert-danger" *ngIf="error">
+                <div class="container-error">
+                    {{mensaje}}
+                </div>
+            </div>
             <button class="boton" type="submit" mat-raised-button color="primary">Login</button>
-            <button class="boton" mat-raised-button color="primary" (click)="IrRegistro()">Registrar</button>
+            <button class="boton" type="button" mat-raised-button color="primary" (click)="IrRegistro()">Registrar</button>
         </form>
     </mat-card-content>
 </mat-card>

@@ -41,7 +41,13 @@ export class AdivinaNumeroComponent implements OnInit {
         this.numeroOculto=Math.floor(Math.random() * 11);
         this.RegistroDatos();
         console.log("Numero oculto: "+this.numeroOculto);
-        document.getElementById('cortina').classList.remove('animacionCortina');
+
+        let cortina = document.getElementById('cortina');
+        if(cortina)
+        {
+          cortina.classList.remove('animacionCortina');
+        }
+        //document.getElementById('cortina').classList.remove('animacionCortina');
       }
       else
       {
@@ -50,7 +56,13 @@ export class AdivinaNumeroComponent implements OnInit {
         this.numeroOculto=Math.floor(Math.random() * 11);
         this.RegistroDatos();
         console.log("Numero oculto: "+this.numeroOculto);
-        document.getElementById('cortina').classList.remove('animacionCortina');
+
+        let cortina = document.getElementById('cortina');
+        if(cortina)
+        {
+          cortina.classList.remove('animacionCortina');
+        }
+        //document.getElementById('cortina').classList.remove('animacionCortina');
       }
     }, 4000);
     

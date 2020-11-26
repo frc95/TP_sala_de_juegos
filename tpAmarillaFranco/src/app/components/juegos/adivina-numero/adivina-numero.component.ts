@@ -78,15 +78,30 @@ export class AdivinaNumeroComponent implements OnInit {
     this.resultado="Segui participando";
     if(this.derrotas==1)
     {
-      document.images['img0'].src="../../../../assets/x.png";
+      let imagen=document.images['img0'];
+      if(imagen)
+      {
+        imagen.src="../../../../assets/x.png";
+      }
+      //document.images['img0'].src="../../../../assets/x.png";
     }
     if(this.derrotas==2)
     {
-      document.images['img1'].src="../../../../assets/x.png";
+      let imagen=document.images['img1'];
+      if(imagen)
+      {
+        imagen.src="../../../../assets/x.png";
+      }
+      //document.images['img1'].src="../../../../assets/x.png";
     }
     if(this.derrotas==3)
     {
-      document.images['img2'].src="../../../../assets/x.png";
+      let imagen=document.images['img2'];
+      if(imagen)
+      {
+        imagen.src="../../../../assets/x.png";
+      }
+      //document.images['img2'].src="../../../../assets/x.png";
       this.activar=false;
       this.resultado="Resultados Guardados. Pulse Reiniciar para seguir jugando";
       this.sv.GuardarPartidaAdivinaNumero(this.victorias);

@@ -11,6 +11,7 @@ export class TablaAnagramaComponent implements OnInit {
 
   @Input() mostrarTablaAnagrama: boolean;
   checked : boolean = false;
+  checkedUsuario : boolean = false;
 
   displayedColumns: string[] = ['usuario', 'aciertos','Errores','tiempo','fecha'];
   dataSource;
@@ -31,19 +32,63 @@ export class TablaAnagramaComponent implements OnInit {
 
   MostrarTop()
   {
-    if(this.checked==false)
+    console.log(this.checked);
+    console.log(this.checkedUsuario);
+    if(this.checked==false && this.checkedUsuario==true)
+    {
+      this.db.TraerPartidasTopUserVictoria("anagrama").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
+    else if(this.checked==false && this.checkedUsuario==false)
     {
       this.db.TraerTopPorVictorias("anagrama").subscribe(doc =>{
         this.dataSource = new MatTableDataSource(doc);
       });
     }
-    else
+    else if(this.checked==true && this.checkedUsuario==true)
+    {
+      this.db.TraerPartidasUser("anagrama").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
+    else if(this.checked==true)
     {
       this.db.TraerListadoOrdenadoPorVictorias("anagrama").subscribe(doc =>{
         this.dataSource = new MatTableDataSource(doc);
       });
     }
     
+  }
+
+  MostrarPartidasUser()
+  {
+    console.log(this.checked);
+    console.log(this.checkedUsuario);
+    if(this.checked==true && this.checkedUsuario==false)
+    {
+      this.db.TraerPartidasTopUserVictoria("anagrama").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
+    else if(this.checkedUsuario==false)
+    {
+      this.db.TraerPartidasUser("anagrama").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
+    else if(this.checkedUsuario==true && this.checked==true)
+    {
+      this.db.TraerTopPorVictorias("anagrama").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
+    else if(this.checkedUsuario==true)
+    {
+      this.db.TraerListadoOrdenadoPorVictorias("anagrama").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
   }
 
 }

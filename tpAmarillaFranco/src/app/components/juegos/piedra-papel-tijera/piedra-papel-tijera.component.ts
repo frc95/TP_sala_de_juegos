@@ -36,10 +36,30 @@ export class PiedraPapelTijeraComponent implements OnInit {
       document.getElementById('tijera').setAttribute('disabled','true');
       document.getElementById('piedra').setAttribute('disabled','true');
       setTimeout(function(){ 
-        document.getElementById('piedra').classList.remove('controlJugador');
-        document.getElementById('papel').removeAttribute('disabled');
-        document.getElementById('tijera').removeAttribute('disabled');
-        document.getElementById('piedra').removeAttribute('disabled');
+        let control=document.getElementById('piedra');
+        if(control)
+        {
+          control.classList.remove('controlJugador');
+        }
+        //document.getElementById('piedra').classList.remove('controlJugador');
+        let papel=document.getElementById('papel');
+        let tijera=document.getElementById('tijera');
+        let piedra=document.getElementById('piedra');
+        if(papel)
+        {
+          papel.removeAttribute('disabled');
+        }
+        if(tijera)
+        {
+          tijera.removeAttribute('disabled');
+        }
+        if(piedra)
+        {
+          piedra.removeAttribute('disabled');
+        }
+        //document.getElementById('papel').removeAttribute('disabled');
+        //document.getElementById('tijera').removeAttribute('disabled');
+        //document.getElementById('piedra').removeAttribute('disabled');
       }, 4000);
     
       this.Maquina();
@@ -53,11 +73,31 @@ export class PiedraPapelTijeraComponent implements OnInit {
     document.getElementById('piedra').setAttribute('disabled','true');
     document.getElementById('tijera').setAttribute('disabled','true');
     document.getElementById('papel').setAttribute('disabled','true');
-    setTimeout(function(){ 
-      document.getElementById('papel').classList.remove('controlJugador');
-      document.getElementById('piedra').removeAttribute('disabled');
-      document.getElementById('tijera').removeAttribute('disabled');
-      document.getElementById('papel').removeAttribute('disabled');
+    setTimeout(function(){
+      let control=document.getElementById('papel');
+      if(control)
+      {
+        control.classList.remove('controlJugador');
+      } 
+      //document.getElementById('papel').classList.remove('controlJugador');
+      let papel=document.getElementById('papel');
+      let tijera=document.getElementById('tijera');
+      let piedra=document.getElementById('piedra');
+      if(papel)
+      {
+        papel.removeAttribute('disabled');
+      }
+      if(tijera)
+      {
+        tijera.removeAttribute('disabled');
+      }
+      if(piedra)
+      {
+        piedra.removeAttribute('disabled');
+      }
+      //document.getElementById('piedra').removeAttribute('disabled');
+      //document.getElementById('tijera').removeAttribute('disabled');
+      //document.getElementById('papel').removeAttribute('disabled');
     }, 4000);
 
     this.Maquina();
@@ -70,11 +110,31 @@ export class PiedraPapelTijeraComponent implements OnInit {
     document.getElementById('piedra').setAttribute('disabled','true');
     document.getElementById('papel').setAttribute('disabled','true');
     document.getElementById('tijera').setAttribute('disabled','true');
-    setTimeout(function(){ 
-      document.getElementById('tijera').classList.remove('controlJugador');
-      document.getElementById('piedra').removeAttribute('disabled');
-      document.getElementById('papel').removeAttribute('disabled');
-      document.getElementById('tijera').removeAttribute('disabled');
+    setTimeout(function(){
+      let control=document.getElementById('tijera');
+      if(control)
+      {
+        control.classList.remove('controlJugador');
+      }  
+      //document.getElementById('tijera').classList.remove('controlJugador');
+      let papel=document.getElementById('papel');
+      let tijera=document.getElementById('tijera');
+      let piedra=document.getElementById('piedra');
+      if(papel)
+      {
+        papel.removeAttribute('disabled');
+      }
+      if(tijera)
+      {
+        tijera.removeAttribute('disabled');
+      }
+      if(piedra)
+      {
+        piedra.removeAttribute('disabled');
+      }
+      //document.getElementById('piedra').removeAttribute('disabled');
+      //document.getElementById('papel').removeAttribute('disabled');
+      //document.getElementById('tijera').removeAttribute('disabled');
     }, 4000);
 
     this.Maquina();
@@ -89,8 +149,13 @@ export class PiedraPapelTijeraComponent implements OnInit {
     if(numero==0)
     {
       document.getElementById('piedraBot').classList.add('controlMaquina');
-      setTimeout(function(){ 
-          document.getElementById('piedraBot').classList.remove('controlMaquina');
+      setTimeout(function(){
+          let bot=document.getElementById('piedraBot');
+          if(bot)
+          {
+            bot.classList.remove('controlMaquina');
+          }
+          //document.getElementById('piedraBot').classList.remove('controlMaquina');
       }, 4000);
 
       if(this.opcion==0)
@@ -117,8 +182,13 @@ export class PiedraPapelTijeraComponent implements OnInit {
     else if(numero==1)
     {
       document.getElementById('papelBot').classList.add('controlMaquina');
-      setTimeout(function(){ 
-          document.getElementById('papelBot').classList.remove('controlMaquina');
+      setTimeout(function(){
+        let bot=document.getElementById('papelBot');
+        if(bot)
+        {
+          bot.classList.remove('controlMaquina');
+        }
+        //document.getElementById('papelBot').classList.remove('controlMaquina');
       }, 4000);
       if(this.opcion==0)
       {
@@ -144,8 +214,13 @@ export class PiedraPapelTijeraComponent implements OnInit {
     else if(numero==2)
     {
       document.getElementById('tijeraBot').classList.add('controlMaquina');
-      setTimeout(function(){ 
-          document.getElementById('tijeraBot').classList.remove('controlMaquina');
+      setTimeout(function(){
+        let bot=document.getElementById('tijeraBot');
+        if(bot)
+        {
+          bot.classList.remove('controlMaquina');
+        } 
+        //document.getElementById('tijeraBot').classList.remove('controlMaquina');
       }, 4000);
       if(this.opcion==0)
       {

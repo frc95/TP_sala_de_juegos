@@ -35,14 +35,9 @@ const routes: Routes = [
         component: RutaDificilComponent,
       },
       {
-        path:'ResultPPT',
-        component: TablaPPTComponent,
-        outlet : 'resultados',
-      },
-      {
-        path:'ResultTateti',
-        component: TablaTatetiComponent,
-        outlet : 'resultados',
+        path:'',
+        outlet : 'juegos',
+        component: RutaFacilComponent,
       },
     ]
   },

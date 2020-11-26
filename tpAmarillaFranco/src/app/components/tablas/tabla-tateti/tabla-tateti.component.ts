@@ -11,6 +11,7 @@ export class TablaTatetiComponent implements OnInit {
 
   @Input() mostrarTablaTateti: boolean;
   checked : boolean = false;
+  checkedUsuario : boolean = false;
 
   displayedColumns: string[] = ['usuario','puntos','victorias', 'derrotas', 'empates','fecha'];
   dataSource
@@ -30,19 +31,63 @@ export class TablaTatetiComponent implements OnInit {
 
   MostrarTop()
   {
-    if(this.checked==false)
+    console.log(this.checked);
+    console.log(this.checkedUsuario);
+    if(this.checked==false && this.checkedUsuario==true)
+    {
+      this.db.TraerPartidasTopUserPuntos("tateti").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
+    else if(this.checked==false && this.checkedUsuario==false)
     {
       this.db.TraerTopPorPuntos("tateti").subscribe(doc =>{
         this.dataSource = new MatTableDataSource(doc);
       });
     }
-    else
+    else if(this.checked==true && this.checkedUsuario==true)
+    {
+      this.db.TraerPartidasUser("tateti").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
+    else if(this.checked==true)
     {
       this.db.TraerListadoOrdenadoPorPuntos("tateti").subscribe(doc =>{
         this.dataSource = new MatTableDataSource(doc);
       });
     }
     
+  }
+
+  MostrarPartidasUser()
+  {
+    console.log(this.checked);
+    console.log(this.checkedUsuario);
+    if(this.checked==true && this.checkedUsuario==false)
+    {
+      this.db.TraerPartidasTopUserPuntos("tateti").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
+    else if(this.checkedUsuario==false)
+    {
+      this.db.TraerPartidasUser("tateti").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
+    else if(this.checkedUsuario==true && this.checked==true)
+    {
+      this.db.TraerTopPorPuntos("tateti").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    }
+    else if(this.checkedUsuario==true)
+    {
+      this.db.TraerListadoOrdenadoPorPuntos("tateti").subscribe(doc =>{
+        this.dataSource = new MatTableDataSource(doc);
+      });
+    } 
   }
 
 }

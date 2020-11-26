@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     }).catch(err => {
 
       this.error=true;
-    
+
       if(err.code == "auth/wrong-password")
       {
         this.mensaje="Error en la contraseña"; 
